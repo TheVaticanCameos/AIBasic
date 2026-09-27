@@ -1,0 +1,16 @@
+"""稳定 softmax / log-softmax / logsumexp：练习骨架，不属于可运行标准实现。"""
+
+import torch
+from torch import Tensor
+
+def logsumexp(x: Tensor, dim: int=-1, keepdim: bool=False) -> Tensor:
+    """x: floating [..., D, ...]；输出沿 dim 归约，要求输入为有限值。"""
+    raise NotImplementedError('手写练习：请完成核心实现')
+
+def log_softmax(x: Tensor, dim: int=-1) -> Tensor:
+    """x、返回值: 同形状 floating tensor；dim 是类别维度。"""
+    raise NotImplementedError('手写练习：请完成核心实现')
+
+def softmax(x: Tensor, dim: int=-1) -> Tensor:
+    """x、返回值: 同形状；沿 dim 的概率和为 1。"""
+    raise NotImplementedError('手写练习：请完成核心实现')

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aibasic-review"
+version = "0.1.0"
+description = "可手写、可验证的 PyTorch 深度学习与强化学习复习模块"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.4", "numpy>=1.24"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=1.10"]
+rl = ["gymnasium>=1.0"]
+
+[tool.setuptools.packages.find]
+include = ["fundamentals*", "layers*", "attention*", "losses*", "optimizers*", "training*", "rl*", "examples*"]
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib -q"
+pythonpath = ["."]
+testpaths = ["fundamentals", "layers", "attention", "losses", "optimizers", "training", "rl", "tests"]
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["practice/workspace"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "ANN"]
+ignore = ["E501", "ANN401"]
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+exclude = ["test_.*\\.py$", "practice/"]
