@@ -61,6 +61,7 @@ python -m pytest fundamentals/tensor_ops/test_module.py
 
 - `test_heads_roundtrip_noncontiguous_and_gather`
 - `test_permute_preserves_spatial_order_and_channels`
+- `test_split_heads_rejects_nonpositive_or_nondivisible_heads`
 
 ## 面试追问与练习
 

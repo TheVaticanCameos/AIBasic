@@ -17,10 +17,14 @@ python -m pip install -e '.[dev,rl]'
 python -m attention.multi_head.implementation
 python -m pytest attention/multi_head/test_module.py
 
+# 自动用对应标准测试验证自己写的练习，无需复制 test 文件
+python -m practice.check fundamentals__tensor_ops
+python -m practice.check --all
+
 # 全量验证
 python -m pytest
 ruff check .
-mypy fundamentals layers attention losses optimizers training rl examples
+mypy fundamentals layers attention losses optimizers training rl examples practice/check.py
 ```
 
 如果已有合适的 PyTorch 环境，可以直接在该环境安装；本地交付使用 `.venv` 并复用机器已有的 CPU PyTorch。仅运行模块和监督学习示例时不需要 `rl` extra；未安装 Gymnasium 时，RL 环境集成测试会明确 skip，纯张量 RL 测试仍可运行。
@@ -59,7 +63,7 @@ attention/multi_head/
 
 1. 按 [ROADMAP.md](ROADMAP.md) 确认前置知识，阅读模块公式和 Tensor 约定。
 2. 运行最小示例，跟踪每一步 shape；阅读测试，理解如何证明正确。
-3. 到 [practice/](practice/README.md) 关闭答案手写，再完成 debug 题或组合题。
+3. 到 [practice/](practice/README.md) 关闭答案手写，用 `python -m practice.check 练习名` 一键验证，再完成 debug 题或组合题。
 4. 在 [复习日志](practice/review_log.md) 记录耗时、错误和下次复习时间。
 
 “仓库已实现”与“个人已掌握”分开记录。练习骨架中的 `NotImplementedError` 是有意留给你填写的空白；标准模块和示例均有完整实现。默认测试不收集练习目录。

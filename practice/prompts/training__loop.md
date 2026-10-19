@@ -21,13 +21,16 @@ microbatch x:[Bi,...], y:[Bi,...]；损失 []；每个梯度与对应参数同�
 
 ## 自测方法
 
-可把 [标准测试](../../training/loop/test_module.py) 复制为 workspace 中的 `test_training__loop.py`，将被测实现的 import 改为 `practice.workspace.training__loop`。保留其他测试辅助导入，然后在根目录执行：
+无需复制测试文件。在仓库根目录执行，自动复用对应标准测试验证你的实现：
 
 ```bash
-python -m pytest practice/workspace/test_training__loop.py
+.venv/bin/python -m practice.check training__loop
 ```
 
-默认全库 pytest 不收集 workspace，避免尚未完成的练习影响标准实现验证。
+激活 `.venv` 后可简写为 `python -m practice.check training__loop`。
+用 `python -m practice.check --all` 批量测试无占位语句的练习，或用 `--list` 查看状态。
+测试失败会显示断言差异和你的实现位置。入口不会修改练习或标准答案。
+更多参数与部分完成时的行为见 [练习说明](../README.md)。
 
 ## 追问
 

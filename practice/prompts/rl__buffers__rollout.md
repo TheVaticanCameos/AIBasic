@@ -21,13 +21,16 @@ add 单步 [B,...]；finish 返回 [T,B,...]；action 为离散 [T,B]。
 
 ## 自测方法
 
-可把 [标准测试](../../rl/buffers/rollout/test_module.py) 复制为 workspace 中的 `test_rl__buffers__rollout.py`，将被测实现的 import 改为 `practice.workspace.rl__buffers__rollout`。保留其他测试辅助导入，然后在根目录执行：
+无需复制测试文件。在仓库根目录执行，自动复用对应标准测试验证你的实现：
 
 ```bash
-python -m pytest practice/workspace/test_rl__buffers__rollout.py
+.venv/bin/python -m practice.check rl__buffers__rollout
 ```
 
-默认全库 pytest 不收集 workspace，避免尚未完成的练习影响标准实现验证。
+激活 `.venv` 后可简写为 `python -m practice.check rl__buffers__rollout`。
+用 `python -m practice.check --all` 批量测试无占位语句的练习，或用 `--list` 查看状态。
+测试失败会显示断言差异和你的实现位置。入口不会修改练习或标准答案。
+更多参数与部分完成时的行为见 [练习说明](../README.md)。
 
 ## 追问
 

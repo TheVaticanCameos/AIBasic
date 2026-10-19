@@ -30,3 +30,9 @@ def test_permute_preserves_spatial_order_and_channels() -> None:
         [[[0.0, 6.0], [1.0, 7.0], [2.0, 8.0], [3.0, 9.0], [4.0, 10.0], [5.0, 11.0]]]
     )
     torch.testing.assert_close(tokens, expected)
+
+
+@pytest.mark.parametrize("num_heads", [0, -1, 3])
+def test_split_heads_rejects_nonpositive_or_nondivisible_heads(num_heads: int) -> None:
+    with pytest.raises(ValueError):
+        split_heads(torch.randn(2, 3, 8), num_heads)
