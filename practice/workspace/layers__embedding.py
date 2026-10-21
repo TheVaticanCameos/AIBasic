@@ -6,8 +6,11 @@ from torch import Tensor, nn
 class Embedding(nn.Module):
 
     def __init__(self, vocab_size: int, dim: int) -> None:
-        raise NotImplementedError('手写练习：请完成核心实现')
+        # raise NotImplementedError('手写练习：请完成核心实现')
+        super().__init__()
+        self.weight = nn.Parameter(0.02 * torch.randn(size=(vocab_size, dim)))
 
     def forward(self, indices: Tensor) -> Tensor:
         """indices int64 [...] -> floating [...,D]；不实现 padding_idx/sparse。"""
-        raise NotImplementedError('手写练习：请完成核心实现')
+        # raise NotImplementedError('手写练习：请完成核心实现')
+        return self.weight[indices]
